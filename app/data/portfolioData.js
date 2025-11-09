@@ -36,7 +36,7 @@ const portfolioData = {
       description: "A full-stack web app that enables users to create and download custom portfolio websites by entering their details and selecting a template. Implemented dynamic data binding, template rendering, and automatic ZIP file generation.",
       tech: ["React", "Node.js", "Express", "MongoDB", "Cloudinary", "Tailwind CSS"],
       link: "#",
-      image: "/images/project1.jpg"  // Add this line
+      image: "/images/project1.png"  // Add this line
 
     },
     {
@@ -44,7 +44,7 @@ const portfolioData = {
       description: "Developed an intelligent app that generates detailed README files by analyzing GitHub repository URLs using the OpenAI API. Implemented API integration, input validation, and dynamic response rendering.",
       tech: ["React", "Node.js", "Express", "MongoDB", "GeminiAI API"],
       link: "#",
-      image: "/images/project2.jpg"  // Add this line
+      image: "/images/project2.png"  // Add this line
 
     }
   ],
