@@ -1,0 +1,54 @@
+const portfolioData = {
+  name: "Abdul Rehman",
+  title: "Full Stack Developer",
+  tagline: "Building digital experiences with the MERN stack",
+  location: "Lahore, Pakistan",
+  email: "rehmanvirk318@gmail.com",
+  phone: "+92 319 6264318",
+  linkedin: "https://linkedin.com/in/rehmanvirk",
+  website: "https://abdul-rehman.dev",
+  about: "I'm a Full Stack Developer specializing in the MERN stack with hands-on experience in building and deploying scalable web applications. I'm passionate about writing clean, maintainable code and collaborating in agile teams to deliver impactful products.",
+  skills: {
+    frontend: ["React", "HTML", "CSS", "JavaScript", "Tailwind CSS", "Figma"],
+    backend: ["Node.js", "Express.js", "MongoDB", "REST APIs", "Authentication (JWT)"],
+    integrations: ["Zoho CRM API", "Google Drive API", "Cloudinary", "Firebase"],
+    tools: ["Git", "Postman", "VS Code", "Linux", "MS Office"],
+    soft: ["Communication", "Teamwork", "Problem Solving", "Adaptability", "Leadership"]
+  },
+  experience: [
+    {
+      position: "Zoho & MERN Stack Developer Intern",
+      company: "Fairchance for CRM",
+      location: "Lahore, Pakistan",
+      duration: "Mar 2025 – Present",
+      responsibilities: [
+        "Developed and maintained backend modules for multiple MERN-based web applications.",
+        "Built a Node.js server integrating Zoho CRM and Google Drive APIs, automating 100% of call recording synchronization.",
+        "Contributed to the backend of a cloud storage application inspired by Google Drive and Zoho WorkDrive — implemented secure file uploads, sharing, and folder management.",
+        "Currently developing a mini-CRM system (MERN) to manage leads, clients, notes, and pipelines with authentication and role-based access.",
+        "Collaborated with frontend and Zoho teams to ensure seamless data flow between CRM, APIs, and MongoDB."
+      ]
+    }
+  ],
+  projects: [
+    {
+      name: "Portagen – Portfolio Builder Platform",
+      description: "A full-stack web app that enables users to create and download custom portfolio websites by entering their details and selecting a template. Implemented dynamic data binding, template rendering, and automatic ZIP file generation.",
+      tech: ["React", "Node.js", "Express", "MongoDB", "Cloudinary", "Tailwind CSS"],
+      link: "#"
+    },
+    {
+      name: "RepoDoc.ai – Automated README Generator",
+      description: "Developed an intelligent app that generates detailed README files by analyzing GitHub repository URLs using the OpenAI API. Implemented API integration, input validation, and dynamic response rendering.",
+      tech: ["React", "Node.js", "Express", "MongoDB", "GeminiAI API"],
+      link: "#"
+    }
+  ],
+  education: {
+    degree: "Bachelor of Science in Computer Science",
+    institution: "University of Agriculture Faisalabad, Toba Tek Singh Campus, Pakistan",
+    duration: "Sep 2021 – May 2025"
+  }
+};
+
+export default portfolioData;
