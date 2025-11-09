@@ -77,8 +77,9 @@ const portfolioData = {
         "JWT",
         "bcrypt",
       ],
-      link: "https://github.com/yourusername/portagen",
       image: "/images/project1.png",
+      liveLink: "https://portagen.vercel.app",
+      githubLink: "https://github.com/Rehmanvirk/Portagen.git",
     },
     {
       name: "RepoDoc.ai – Automated README Generator",
@@ -86,8 +87,9 @@ const portfolioData = {
         "Developed an intelligent app that generates detailed README files by analyzing GitHub repository URLs using the OpenAI API. Implemented API integration, input validation, and dynamic response rendering.",
       longDescription: "",
       tech: ["React", "Node.js", "Express", "MongoDB", "GeminiAI API"],
-      link: "#",
       image: "/images/project2.png", // Add this line
+      liveLink: "https://repodoc1.vercel.app/",
+      githubLink: "https://github.com/Rehmanvirk/RepoDoc.git",
     },
   ],
   education: {
