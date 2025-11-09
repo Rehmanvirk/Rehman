@@ -35,13 +35,17 @@ const portfolioData = {
       name: "Portagen – Portfolio Builder Platform",
       description: "A full-stack web app that enables users to create and download custom portfolio websites by entering their details and selecting a template. Implemented dynamic data binding, template rendering, and automatic ZIP file generation.",
       tech: ["React", "Node.js", "Express", "MongoDB", "Cloudinary", "Tailwind CSS"],
-      link: "#"
+      link: "#",
+      image: "/images/project1.jpg"  // Add this line
+
     },
     {
       name: "RepoDoc.ai – Automated README Generator",
       description: "Developed an intelligent app that generates detailed README files by analyzing GitHub repository URLs using the OpenAI API. Implemented API integration, input validation, and dynamic response rendering.",
       tech: ["React", "Node.js", "Express", "MongoDB", "GeminiAI API"],
-      link: "#"
+      link: "#",
+      image: "/images/project2.jpg"  // Add this line
+
     }
   ],
   education: {
