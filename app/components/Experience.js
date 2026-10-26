@@ -1,22 +1,24 @@
 "use client";
 
-import { useEffect } from 'react';
-import portfolioData from '../data/portfolioData';
+import { useEffect, useState } from "react";
+import portfolioData from "../data/portfolioData";
 
 const Experience = () => {
+  const [selectedArea, setSelectedArea] = useState(0);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add("visible");
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    const elements = document.querySelectorAll('.fade-in');
+    const elements = document.querySelectorAll(".fade-in");
     elements.forEach((el) => observer.observe(el));
 
     return () => {
@@ -24,65 +26,201 @@ const Experience = () => {
     };
   }, []);
 
+  const exp = portfolioData.experience[0];
+
   return (
-    // === CHANGE: Use CSS variable for background ===
-    <section id="experience" className="section-padding transition-colors duration-300" style={{ backgroundColor: 'var(--background)' }}>
+    <section
+      id="experience"
+      className="section-padding transition-colors duration-300"
+      style={{ backgroundColor: "var(--background)" }}
+    >
       <div className="container mx-auto px-6">
-        <h2 className="section-title gradient-text fade-in">Work Experience</h2>
-        <p className="max-w-2xl mt-4 mb-12 fade-in" style={{ color: 'var(--text-light)' }}>
-          My professional journey and the roles I've taken on to grow as a developer.
-        </p>
-        
-        <div className="relative">
-          {/* === CHANGE: Themed Timeline Line === */}
-          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5" style={{ background: 'linear-gradient(to bottom, var(--primary), var(--secondary))' }}></div>
-          
-          {portfolioData.experience.map((exp, index) => (
-            <div key={index} className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} fade-in`} style={{ animationDelay: `${index * 0.2}s` }}>
-              {/* === CHANGE: Themed Timeline Dot === */}
-              <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 rounded-full gradient-bg border-4 z-10" style={{ borderColor: 'var(--background)' }}></div>
-              
-              {/* Content */}
-              <div className={`ml-20 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-12' : 'md:ml-auto md:pl-12'}`}>
-                {/* === CHANGE: Enhanced Card with Shadow and Border === */}
-                <div className="card-shadow card-hover rounded-lg p-6" style={{ backgroundColor: 'var(--surface)', border: '1px solid var(--border)' }}>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                    {/* === CHANGE: Use CSS variable for text color === */}
-                    <h3 className="text-xl font-bold" style={{ color: 'var(--text)' }}>{exp.position}</h3>
-                    <span className="text-sm mt-1 sm:mt-0" style={{ color: 'var(--text-light)' }}>{exp.duration}</span>
-                  </div>
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M3 21v-4a4 4 0 0 1 4-4h5"></path>
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                      </svg>
-                    </div>
-                    <div>
-                      {/* === CHANGE: Use CSS variables for text color === */}
-                      <h4 className="font-semibold" style={{ color: 'var(--text)' }}>{exp.company}</h4>
-                      <p className="text-sm" style={{ color: 'var(--text-light)' }}>{exp.location}</p>
-                    </div>
-                  </div>
-                  <ul className="space-y-2">
-                    {exp.responsibilities.map((resp, respIndex) => (
-                      <li key={respIndex} className="flex items-start">
-                        {/* === CHANGE: Use CSS variable for icon color === */}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 mt-0.5 flex-shrink-0" style={{ color: 'var(--primary)' }}>
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        {/* === CHANGE: Use CSS variable for text color === */}
-                        <span style={{ color: 'var(--text-light)' }}>{resp}</span>
-                      </li>
-                    ))}
-                  </ul>
+        <div className="text-center max-w-3xl mx-auto mb-16 fade-in">
+          <h2 className="section-title gradient-text inline-block">Work Experience</h2>
+          <p
+            className="text-base sm:text-lg mt-4 leading-relaxed"
+            style={{ color: "var(--text-light)" }}
+          >
+            Delivering high-impact enterprise backends, Zoho ecosystem workflows, and AI automation in production.
+          </p>
+        </div>
+
+        {/* Featured Experience Card */}
+        <div className="max-w-5xl mx-auto fade-in">
+          <div
+            className="card-shadow rounded-2xl border p-6 sm:p-10 relative overflow-hidden"
+            style={{
+              backgroundColor: "var(--surface)",
+              borderColor: "var(--border)",
+            }}
+          >
+            {/* Header info */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b mb-8"
+                 style={{ borderColor: "var(--border)" }}>
+              <div>
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                    Current Position
+                  </span>
+                  <span
+                    className="text-xs font-semibold px-2.5 py-1 rounded-full border"
+                    style={{
+                      borderColor: "var(--border)",
+                      color: "var(--text-light)",
+                      backgroundColor: "var(--background)",
+                    }}
+                  >
+                    {exp.type}
+                  </span>
+                </div>
+
+                <h3
+                  className="text-2xl sm:text-3xl font-extrabold tracking-tight"
+                  style={{ color: "var(--text)" }}
+                >
+                  {exp.position}
+                </h3>
+
+                <div
+                  className="text-base sm:text-lg font-semibold mt-1 flex items-center gap-2"
+                  style={{ color: "var(--text-light)" }}
+                >
+                  <span className="gradient-text font-bold">{exp.company}</span>
+                  <span>•</span>
+                  <span>{exp.location}</span>
                 </div>
               </div>
+
+              {/* Duration badge */}
+              <div
+                className="self-start lg:self-center px-4 py-2 rounded-xl border text-sm font-bold shadow-sm"
+                style={{
+                  backgroundColor: "var(--background)",
+                  borderColor: "var(--border)",
+                  color: "var(--text)",
+                }}
+              >
+                📅 {exp.duration}
+              </div>
             </div>
-          ))}
+
+            {/* Role Summary */}
+            <p
+              className="text-base leading-relaxed mb-8"
+              style={{ color: "var(--text)" }}
+            >
+              {exp.description}
+            </p>
+
+            {/* Interactive Domain Tabs */}
+            <div className="mb-6">
+              <div className="text-xs font-bold uppercase tracking-wider mb-3 text-indigo-500">
+                Explore Core Focus Areas & Deliverables
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {exp.areas.map((area, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedArea(idx)}
+                    className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+                      selectedArea === idx
+                        ? "gradient-bg text-white shadow-md scale-105"
+                        : "border hover:border-indigo-500"
+                    }`}
+                    style={{
+                      backgroundColor:
+                        selectedArea === idx ? "" : "var(--background)",
+                      borderColor:
+                        selectedArea === idx ? "" : "var(--border)",
+                      color: selectedArea === idx ? "white" : "var(--text)",
+                    }}
+                  >
+                    {area.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Area Details Box */}
+            <div
+              className="p-6 sm:p-8 rounded-xl border transition-all"
+              style={{
+                backgroundColor: "var(--background)",
+                borderColor: "var(--border)",
+              }}
+            >
+              <h4
+                className="text-lg font-bold mb-4 flex items-center gap-2"
+                style={{ color: "var(--text)" }}
+              >
+                <span className="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                <span>{exp.areas[selectedArea].title}</span>
+              </h4>
+
+              <ul className="space-y-3.5">
+                {exp.areas[selectedArea].points.map((pt, pIdx) => (
+                  <li key={pIdx} className="flex items-start gap-3">
+                    <span className="w-5 h-5 rounded-md gradient-bg flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-0.5 shadow-sm">
+                      ✓
+                    </span>
+                    <span
+                      className="text-sm sm:text-base leading-relaxed"
+                      style={{ color: "var(--text)" }}
+                    >
+                      {pt}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* All Pillars Quick Summary Grid */}
+            <div className="mt-8 pt-8 border-t grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                 style={{ borderColor: "var(--border)" }}>
+              <div
+                className="p-4 rounded-xl border text-xs"
+                style={{
+                  backgroundColor: "var(--background)",
+                  borderColor: "var(--border)",
+                  color: "var(--text-light)",
+                }}
+              >
+                <div className="font-bold text-sm mb-1" style={{ color: "var(--text)" }}>
+                  Agent Desk CRM
+                </div>
+                Architected MERN backend with live Zoho CRM synchronization, secure JWT & RBAC.
+              </div>
+
+              <div
+                className="p-4 rounded-xl border text-xs"
+                style={{
+                  backgroundColor: "var(--background)",
+                  borderColor: "var(--border)",
+                  color: "var(--text-light)",
+                }}
+              >
+                <div className="font-bold text-sm mb-1" style={{ color: "var(--text)" }}>
+                  Zoho MCP + Claude AI
+                </div>
+                Pioneered Model Context Protocol server enabling LLMs to build CRM schemas & triage tickets.
+              </div>
+
+              <div
+                className="p-4 rounded-xl border text-xs"
+                style={{
+                  backgroundColor: "var(--background)",
+                  borderColor: "var(--border)",
+                  color: "var(--text-light)",
+                }}
+              >
+                <div className="font-bold text-sm mb-1" style={{ color: "var(--text)" }}>
+                  Oracle ⇄ Zoho Two-Way Sync
+                </div>
+                Built real-time bidirectional data exchange eliminating manual cross-department entry.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

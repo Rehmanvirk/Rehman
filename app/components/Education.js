@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from 'react';
-import portfolioData from '../data/portfolioData';
+import { useEffect } from "react";
+import portfolioData from "../data/portfolioData";
 
 const Education = () => {
   useEffect(() => {
@@ -9,14 +9,14 @@ const Education = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add("visible");
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    const elements = document.querySelectorAll('.fade-in');
+    const elements = document.querySelectorAll(".fade-in");
     elements.forEach((el) => observer.observe(el));
 
     return () => {
@@ -25,66 +25,118 @@ const Education = () => {
   }, []);
 
   return (
-    <section id="education" className="section-padding bg-white dark:bg-gray-800 transition-colors duration-300">
+    <section
+      id="education"
+      className="section-padding transition-colors duration-300"
+      style={{ backgroundColor: "var(--background)" }}
+    >
       <div className="container mx-auto px-6">
-        <h2 className="section-title gradient-text fade-in">Education</h2>
-        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mt-4 mb-12 fade-in">
-          My academic background and educational journey.
-        </p>
-        
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-xl p-1">
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-8">
-              <div className="flex flex-col md:flex-row md:items-center">
-                <div className="md:w-1/4 mb-6 md:mb-0">
-                  <div className="w-24 h-24 mx-auto md:mx-0 rounded-full gradient-bg flex items-center justify-center text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                    </svg>
-                  </div>
+        <div className="text-center max-w-3xl mx-auto mb-16 fade-in">
+          <h2 className="section-title gradient-text inline-block">Education</h2>
+          <p
+            className="text-base sm:text-lg mt-4 leading-relaxed"
+            style={{ color: "var(--text-light)" }}
+          >
+            Academic foundation in computer science, software engineering principles, and system design.
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto fade-in">
+          <div
+            className="card-shadow rounded-2xl border p-8 sm:p-12 relative overflow-hidden"
+            style={{
+              backgroundColor: "var(--surface)",
+              borderColor: "var(--border)",
+            }}
+          >
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              {/* Academic Cap Icon */}
+              <div className="w-24 h-24 rounded-2xl gradient-bg flex items-center justify-center text-white flex-shrink-0 shadow-lg">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="44"
+                  height="44"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </div>
+
+              {/* Degree & Institution */}
+              <div className="flex-1 text-center md:text-left">
+                <div className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 mb-2">
+                  Graduated
                 </div>
-                
-                <div className="md:w-3/4 md:pl-8">
-                  <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{portfolioData.education.degree}</h3>
-                  <h4 className="text-xl text-gray-700 dark:text-gray-300 mb-4">{portfolioData.education.institution}</h4>
-                  <div className="flex items-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-500 mr-2">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                      <line x1="16" y1="2" x2="16" y2="6"></line>
-                      <line x1="8" y1="2" x2="8" y2="6"></line>
-                      <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                    <span className="text-gray-600 dark:text-gray-400">{portfolioData.education.duration}</span>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                    <div className="flex items-start">
-                      <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center text-indigo-600 dark:text-indigo-300 mr-3 flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                          <path d="M2 17l10 5 10-5"></path>
-                          <path d="M2 12l10 5 10-5"></path>
-                        </svg>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-1 text-gray-900 dark:text-white">Core Studies</h5>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm">Computer Science, Algorithms, Data Structures</p>
-                      </div>
+
+                <h3
+                  className="text-2xl sm:text-3xl font-extrabold tracking-tight"
+                  style={{ color: "var(--text)" }}
+                >
+                  {portfolioData.education.degree}
+                </h3>
+
+                <h4
+                  className="text-base sm:text-lg font-semibold mt-1 mb-2"
+                  style={{ color: "var(--text-light)" }}
+                >
+                  {portfolioData.education.institution}
+                </h4>
+
+                <div
+                  className="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1 rounded-lg border"
+                  style={{
+                    backgroundColor: "var(--background)",
+                    borderColor: "var(--border)",
+                    color: "var(--text)",
+                  }}
+                >
+                  <span>📅</span>
+                  <span>{portfolioData.education.duration}</span>
+                </div>
+
+                <p
+                  className="text-sm mt-4 leading-relaxed"
+                  style={{ color: "var(--text-light)" }}
+                >
+                  {portfolioData.education.description}
+                </p>
+
+                {/* Core Disciplines */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 pt-6 border-t"
+                     style={{ borderColor: "var(--border)" }}>
+                  <div
+                    className="p-3.5 rounded-xl border text-left"
+                    style={{
+                      backgroundColor: "var(--background)",
+                      borderColor: "var(--border)",
+                    }}
+                  >
+                    <div className="font-bold text-sm mb-1" style={{ color: "var(--text)" }}>
+                      Algorithms & Data Structures
                     </div>
-                    
-                    <div className="flex items-start">
-                      <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center text-indigo-600 dark:text-indigo-300 mr-3 flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M9 11H3v10h6V11z"></path>
-                          <path d="M15 3h6v18h-6V3z"></path>
-                          <path d="M9 7h6v14H9V7z"></path>
-                        </svg>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold mb-1 text-gray-900 dark:text-white">Achievements</h5>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm">Dean's List, Technical Competitions</p>
-                      </div>
+                    <div className="text-xs" style={{ color: "var(--text-light)" }}>
+                      System complexity analysis, tree structures, graph traversal, and optimization.
+                    </div>
+                  </div>
+
+                  <div
+                    className="p-3.5 rounded-xl border text-left"
+                    style={{
+                      backgroundColor: "var(--background)",
+                      borderColor: "var(--border)",
+                    }}
+                  >
+                    <div className="font-bold text-sm mb-1" style={{ color: "var(--text)" }}>
+                      Software Architecture
+                    </div>
+                    <div className="text-xs" style={{ color: "var(--text-light)" }}>
+                      Design patterns, distributed computing, database management, and web standards.
                     </div>
                   </div>
                 </div>
